@@ -8,7 +8,7 @@ $config = [
     'aliases'=>[
         '@archivos' => '@app/_files',
     ],
-    'name'=>'Efip Uno',
+    'name'=>'Seminario Final',
     'modules' => [
         'api' => [
             'class' => 'app\modules\api\Api',

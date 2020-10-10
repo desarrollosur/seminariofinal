@@ -14,7 +14,7 @@ services:
      TZ: America/Buenos_Aires
   postgres:
      image: postgres:9.6.12
-     container_name: postgresefipuno
+     container_name: postgrestfg
      volumes:
      - ./bd:/docker-entrypoint-initdb.d
      - pgdata:/var/lib/postgresql/data

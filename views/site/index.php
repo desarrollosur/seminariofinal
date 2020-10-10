@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-$this->title = 'Cadejur - Efip 1';
+$this->title = 'Seminario Final - TFG';
 ?>
 
 <div class="site-index">
