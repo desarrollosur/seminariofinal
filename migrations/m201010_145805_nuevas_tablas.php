@@ -17,8 +17,16 @@ class m201010_145805_nuevas_tablas extends Migration
             'nombre_archivo'=>$this->string()->notNull(),
             'tipo'=>$this->string()->notNull(),
             'activo'=>$this->boolean()->defaultValue(true), // para soft delete
+            'fecha_creacion'=>$this->timestamp(), // para timestamp behavior
+            'fecha_actualizacion'=>$this->timestamp(), // para timestamp behavior
+            'creado_porid'=>$this->integer(), // para blame behavior
+            'actualizado_porid'=>$this->integer(), // para blame behavior
+            'version'=>$this->integer()->defaultValue(0) // para optimistic lock behavior     
         ]);
         
+        $this->addForeignKey('fk-multimedia-creado_porid', 'multimedia', 'creado_porid', 'user', 'id');
+        $this->addForeignKey('fk-multimedia-actualizado_porid', 'multimedia', 'actualizado_porid', 'user', 'id');
+
         $this->createTable('categoria', [
             'id'=>$this->primaryKey(),
             'descripcion'=>$this->string()->notNull(),
@@ -31,7 +39,7 @@ class m201010_145805_nuevas_tablas extends Migration
         ]);
 
         $this->addForeignKey('fk-categoria-creado_porid', 'categoria', 'creado_porid', 'user', 'id');
-        $this->addForeignKey('fk-categoria-actualizado_porid', 'categoria', 'creado_porid', 'user', 'id');
+        $this->addForeignKey('fk-categoria-actualizado_porid', 'categoria', 'actualizado_porid', 'user', 'id');
         
         
         $this->createTable('subcategoria', [
@@ -47,7 +55,7 @@ class m201010_145805_nuevas_tablas extends Migration
         ]);
         
         $this->addForeignKey('fk-subcategoria-creado_porid', 'subcategoria', 'creado_porid', 'user', 'id');
-        $this->addForeignKey('fk-subcategoria-actualizado_porid', 'subcategoria', 'creado_porid', 'user', 'id');
+        $this->addForeignKey('fk-subcategoria-actualizado_porid', 'subcategoria', 'actualizado_porid', 'user', 'id');
         $this->addForeignKey('fk-subcategoria-categoriaid', 'subcategoria', 'categoriaid', 'categoria', 'id');
         
         
@@ -66,7 +74,7 @@ class m201010_145805_nuevas_tablas extends Migration
         ]);
 
         $this->addForeignKey('fk-actividad-creado_porid', 'actividad', 'creado_porid', 'user', 'id');
-        $this->addForeignKey('fk-actividad-actualizado_porid', 'actividad', 'creado_porid', 'user', 'id');
+        $this->addForeignKey('fk-actividad-actualizado_porid', 'actividad', 'actualizado_porid', 'user', 'id');
         $this->addForeignKey('fk-actividad-subcategoriaid', 'actividad', 'subcategoriaid', 'subcategoria', 'id');
         $this->addForeignKey('fk-actividad-multimediaid', 'actividad', 'multimediaid', 'multimedia', 'id');
         
@@ -85,7 +93,7 @@ class m201010_145805_nuevas_tablas extends Migration
         ]);
         
         $this->addForeignKey('fk-actividad_opcion-creado_porid', 'actividad_opcion', 'creado_porid', 'user', 'id');
-        $this->addForeignKey('fk-actividad_opcion-actualizado_porid', 'actividad_opcion', 'creado_porid', 'user', 'id');
+        $this->addForeignKey('fk-actividad_opcion-actualizado_porid', 'actividad_opcion', 'actualizado_porid', 'user', 'id');
         $this->addForeignKey('fk-actividad_opcion-actividadid', 'actividad_opcion', 'actividadid', 'actividad', 'id');
      
         
@@ -102,7 +110,7 @@ class m201010_145805_nuevas_tablas extends Migration
         ]);
 
         $this->addForeignKey('fk-cuestionario-creado_porid', 'cuestionario', 'creado_porid', 'user', 'id');
-        $this->addForeignKey('fk-cuestionario-actualizado_porid', 'cuestionario', 'creado_porid', 'user', 'id');
+        $this->addForeignKey('fk-cuestionario-actualizado_porid', 'cuestionario', 'actualizado_porid', 'user', 'id');
         
         $this->createTable('cuestionario_actividad', [
             'cuestionarioid'=>$this->integer()->notNull(),
@@ -117,7 +125,7 @@ class m201010_145805_nuevas_tablas extends Migration
         
         $this->addPrimaryKey('cuestionario_actividad_pk', 'cuestionario_actividad', ['cuestionarioid', 'actividadid']);
         $this->addForeignKey('fk-cuestionario_actividad-creado_porid', 'cuestionario_actividad', 'creado_porid', 'user', 'id');
-        $this->addForeignKey('fk-cuestionario_actividad-actualizado_porid', 'cuestionario_actividad', 'creado_porid', 'user', 'id');
+        $this->addForeignKey('fk-cuestionario_actividad-actualizado_porid', 'cuestionario_actividad', 'actualizado_porid', 'user', 'id');
         $this->addForeignKey('fk-cuestionario_actividad-cuestionarioid', 'cuestionario_actividad', 'cuestionarioid', 'actividad', 'id');
         $this->addForeignKey('fk-cuestionario_actividad-actividadid', 'cuestionario_actividad', 'actividadid', 'cuestionario', 'id');
         
@@ -134,7 +142,7 @@ class m201010_145805_nuevas_tablas extends Migration
         ]);
 
         $this->addForeignKey('fk-tipo_finalizacion_cuestionario-creado_porid', 'tipo_finalizacion_cuestionario', 'creado_porid', 'user', 'id');
-        $this->addForeignKey('fk-tipo_finalizacion_cuestionario-actualizado_porid', 'tipo_finalizacion_cuestionario', 'creado_porid', 'user', 'id');
+        $this->addForeignKey('fk-tipo_finalizacion_cuestionario-actualizado_porid', 'tipo_finalizacion_cuestionario', 'actualizado_porid', 'user', 'id');
         
         
         $this->createTable('intento_resolucion', [
@@ -152,7 +160,7 @@ class m201010_145805_nuevas_tablas extends Migration
         ]);
         
         $this->addForeignKey('fk-intento_resolucion-creado_porid', 'intento_resolucion', 'creado_porid', 'user', 'id');
-        $this->addForeignKey('fk-intento_resolucion-actualizado_porid', 'intento_resolucion', 'creado_porid', 'user', 'id');
+        $this->addForeignKey('fk-intento_resolucion-actualizado_porid', 'intento_resolucion', 'actualizado_porid', 'user', 'id');
         $this->addForeignKey('fk-intento_resolucion-userid', 'intento_resolucion', 'userid', 'user', 'id');
         $this->addForeignKey('fk-intento_resolucion-cuestionarioid', 'intento_resolucion', 'cuestionarioid', 'cuestionario', 'id');
         $this->addForeignKey('fk-intento_resolucion-tipo_finalizacion_cuestionarioid', 'intento_resolucion', 'tipo_finalizacion_cuestionarioid', 'tipo_finalizacion_cuestionario', 'id');
@@ -170,7 +178,7 @@ class m201010_145805_nuevas_tablas extends Migration
         ]);
 
         $this->addForeignKey('fk-opcion_intento_resolucion-creado_porid', 'opcion_intento_resolucion', 'creado_porid', 'user', 'id');
-        $this->addForeignKey('fk-opcion_intento_resolucion-actualizado_porid', 'opcion_intento_resolucion', 'creado_porid', 'user', 'id');
+        $this->addForeignKey('fk-opcion_intento_resolucion-actualizado_porid', 'opcion_intento_resolucion', 'actualizado_porid', 'user', 'id');
         $this->addForeignKey('fk-opcion_intento_resolucion-intento_resolucionid', 'opcion_intento_resolucion', 'intento_resolucionid', 'intento_resolucion', 'id');
         $this->addForeignKey('fk-opcion_intento_resolucion-actividad_opcionid', 'opcion_intento_resolucion', 'actividad_opcionid', 'actividad_opcion', 'id');
                         
