@@ -32,9 +32,6 @@ use app\models\User;
  * @property integer $creado_porid
  * @property integer $actualizado_porid
  *
- * @property Administrativo $administrativo
- * @property Medico $medico
- * @property Paciente $paciente
  * @property Pais $nacionalidad
  * @property TipoDni $tipoDni
  * @property User $creadoPor
@@ -118,29 +115,8 @@ abstract class Persona extends ActiveRecord
         ];
     }
 
-    /**
-     * @return ActiveQuery
-     */
-    public function getAdministrativo()
-    {
-        return $this->hasOne(\app\models\Administrativo::className(), ['personaid' => 'id']);
-    }
 
-    /**
-     * @return ActiveQuery
-     */
-    public function getMedico()
-    {
-        return $this->hasOne(\app\models\Medico::className(), ['personaid' => 'id']);
-    }
 
-    /**
-     * @return ActiveQuery
-     */
-    public function getPaciente()
-    {
-        return $this->hasOne(\app\models\Paciente::className(), ['personaid' => 'id']);
-    }
 
     /**
      * @return ActiveQuery

@@ -10,9 +10,6 @@ $config = [
     ],
     'name'=>'Efip Uno',
     'modules' => [
-        'agenda' => [
-            'class' => 'app\modules\agenda\Agenda',
-        ],        
         'api' => [
             'class' => 'app\modules\api\Api',
         ],
