@@ -48,11 +48,6 @@ AppAsset::register($this);
                 'url'=>['/gii']
             ]:'',
             [
-                'label' => 'Agenda',
-                'url'=>'/agenda/default/index',
-                'visible'=>!Yii::$app->user->isGuest
-            ],
-            [
                 'label'=>'Auditoría',
                 'url'=>'/audit',
                 'visible'=>Yii::$app->user->can('admin')
@@ -68,24 +63,8 @@ AppAsset::register($this);
                 'visible'=>Yii::$app->user->can('admin'),
                 'items'=>[
                     [
-                        'label'=>'Obras Sociales',
-                        'url'=>'/common/obra-social/index'
-                    ],
-                    [
                         'label'=>'Paises',
                         'url'=>'/common/pais/index'
-                    ],                   
-                    [
-                        'label'=>'Servicios',
-                        'url'=>'/common/servicio/index'
-                    ],                   
-                    [
-                        'label'=>'Médicos y Servicios',
-                        'url'=>'/common/medico-horario-servicio/index'
-                    ],                   
-                    [
-                        'label'=>'Pacientes',
-                        'url'=>'/common/paciente/index'
                     ],                   
                 ]
             ],
