@@ -11,4 +11,4 @@ Sistema de generación y análisis de cuestionarios adaptables mediante intelige
 
 # Autor
 
-Mariano Boisselier
+Mariano Boisselier - Legajo VINF07567
