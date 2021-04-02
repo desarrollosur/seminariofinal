@@ -2,8 +2,8 @@
 
 namespace app\models;
 
-use Yii;
-use \app\models\base\Cuestionario as BaseCuestionario;
+use app\business\interfaces\IServicioTutorIA;
+use app\models\base\Cuestionario as BaseCuestionario;
 use bedezign\yii2\audit\AuditTrailBehavior;
 use yii\behaviors\OptimisticLockBehavior;
 use yii\helpers\ArrayHelper;
@@ -37,5 +37,9 @@ class Cuestionario extends BaseCuestionario
     
     public function optimisticLock(): string {
         return 'version';
-    }     
+    }
+
+    public function debeContinuarRespondiendo(IServicioTutorIA $tutor): boolean {
+
+    }
 }
