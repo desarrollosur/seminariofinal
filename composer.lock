@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "632fc9c7365f3a8fca0298f182c76d5d",
+    "content-hash": "b8a6024dbb23ddfe80d06300dead132d",
     "packages": [
         {
             "name": "2amigos/yii2-chartjs-widget",
@@ -809,6 +809,48 @@
                 "yii2"
             ],
             "time": "2020-06-24T12:35:07+00:00"
+        },
+        {
+            "name": "dmstr/yii2-web",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmstr/yii2-web.git",
+                "reference": "04b38080490e530890014e5f0e1ce701bc57a289"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmstr/yii2-web/zipball/04b38080490e530890014e5f0e1ce701bc57a289",
+                "reference": "04b38080490e530890014e5f0e1ce701bc57a289",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "2.0.*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dmstr\\web\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christopher Stebe",
+                    "email": "c.stebe@herzogkommunikation.de"
+                }
+            ],
+            "description": "Yii2 Framework web traits",
+            "keywords": [
+                "behaviors",
+                "extension",
+                "traits",
+                "yii2"
+            ],
+            "time": "2020-05-20T11:38:58+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -7007,7 +7049,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "schmunk42/yii2-giiant": 0
+        "schmunk42/yii2-giiant": 0,
+        "dmstr/yii2-web": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

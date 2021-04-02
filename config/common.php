@@ -10,6 +10,9 @@ $config = [
     ],
     'name'=>'Seminario Final',
     'modules' => [
+        'actividad'=>[
+            'class' => 'app\modules\actividad\Actividad',
+        ],
         'api' => [
             'class' => 'app\modules\api\Api',
         ],

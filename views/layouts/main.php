@@ -41,6 +41,32 @@ AppAsset::register($this);
             [
                 'label' => 'Inicio', 'url' => ['/site/index']
             ],
+            [
+                'label'=>'Cuestionarios',
+                'url'=>'#',
+                'visible'=>Yii::$app->user->can('admin'),
+                'items'=>[
+                    [
+                        'label'=>'Nuevo Cuestionario',
+                        'url'=>'/actividad/cuestionario/create'
+                    ],                   
+                    [
+                        'label'=>'Realizar Cuestionario',
+                        'url'=>'/actividad/cuestionario/realizar'
+                    ],                   
+                ]
+            ],
+            [
+                'label'=>'Actividades',
+                'url'=>'#',
+                'visible'=>Yii::$app->user->can('admin'),
+                'items'=>[
+                    [
+                        'label'=>'Nueva Actividad',
+                        'url'=>'/actividad/actividad/create'
+                    ],                   
+                ]
+            ],
             (Yii::$app->hasModule('gii'))?
             [
                 'label'=>'Gii',

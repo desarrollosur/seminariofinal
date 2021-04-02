@@ -37,7 +37,8 @@ $config = [
                 'class' => \yii\console\controllers\MigrateController::class,
                 'migrationPath' => [
                     '@app/migrations',
-                    '@app/modules/common/migrations'
+                    '@app/modules/common/migrations',
+                    '@app/modules/actividad/migrations'
                 ],
                 'migrationNamespaces'=>[
                     'Da\User\Migration'
