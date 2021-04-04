@@ -21,7 +21,8 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'css/star-rating.min.css'
+        'css/star-rating.min.css',
+        'css/wizard.css'
     ];
     public $js = [
         'js/star-rating.min.js',

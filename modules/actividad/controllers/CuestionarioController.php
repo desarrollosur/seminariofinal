@@ -14,4 +14,9 @@ class CuestionarioController extends \yii\web\Controller
         return $this->render('index');
     }
 
+    public function actionRealizarCuestionario($id)
+    {
+        return $this->render('realizar_cuestionario');
+    }
+    
 }

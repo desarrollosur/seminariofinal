@@ -52,7 +52,7 @@ AppAsset::register($this);
                     ],                   
                     [
                         'label'=>'Realizar Cuestionario',
-                        'url'=>'/actividad/cuestionario/realizar'
+                        'url'=>['/actividad/cuestionario/realizar-cuestionario','id'=>1]
                     ],                   
                 ]
             ],
