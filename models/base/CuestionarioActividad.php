@@ -23,8 +23,8 @@ use yii\db\Expression;
  * @property integer $version
  * @property string $fecha_creacion
  *
- * @property \app\models\Actividad $cuestionario
- * @property \app\models\Cuestionario $actividad
+ * @property \app\models\Cuestionario $cuestionario
+ * @property \app\models\Actividad $actividad
  * @property \app\models\User $creadoPor
  * @property \app\models\User $actualizadoPor
  * @property string $aliasModel
@@ -74,8 +74,8 @@ abstract class CuestionarioActividad extends \yii\db\ActiveRecord
             [['cuestionarioid', 'actividadid', 'activo', 'creado_porid', 'actualizado_porid', 'version'], 'integer'],
             [['fecha_actualizacion'], 'safe'],
             [['cuestionarioid', 'actividadid'], 'unique', 'targetAttribute' => ['cuestionarioid', 'actividadid']],
-            [['cuestionarioid'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\Actividad::className(), 'targetAttribute' => ['cuestionarioid' => 'id']],
-            [['actividadid'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\Cuestionario::className(), 'targetAttribute' => ['actividadid' => 'id']],
+            [['cuestionarioid'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\Cuestionario::className(), 'targetAttribute' => ['cuestionarioid' => 'id']],
+            [['actividadid'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\Actividad::className(), 'targetAttribute' => ['actividadid' => 'id']],
             [['creado_porid'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\User::className(), 'targetAttribute' => ['creado_porid' => 'id']],
             [['actualizado_porid'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\User::className(), 'targetAttribute' => ['actualizado_porid' => 'id']]
         ];
@@ -103,7 +103,7 @@ abstract class CuestionarioActividad extends \yii\db\ActiveRecord
      */
     public function getCuestionario()
     {
-        return $this->hasOne(\app\models\Actividad::className(), ['id' => 'cuestionarioid']);
+        return $this->hasOne(\app\models\Cuestionario::className(), ['id' => 'cuestionarioid']);
     }
 
     /**
@@ -111,7 +111,7 @@ abstract class CuestionarioActividad extends \yii\db\ActiveRecord
      */
     public function getActividad()
     {
-        return $this->hasOne(\app\models\Cuestionario::className(), ['id' => 'actividadid']);
+       return $this->hasOne(\app\models\Actividad::className(), ['id' => 'actividadid']);
     }
 
     /**
