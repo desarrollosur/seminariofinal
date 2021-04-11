@@ -22,7 +22,8 @@
         "bedezign/yii2-audit": "^1.1",
         "schmunk42/yii2-giiant": "@stable",
         "msheng/yii2-jwt": "^1.0",
-        "dmstr/yii2-web": "dev-master"
+        "dmstr/yii2-web": "dev-master",
+        "kartik-v/yii2-filesystem": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

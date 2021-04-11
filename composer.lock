@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8a6024dbb23ddfe80d06300dead132d",
+    "content-hash": "3ce781989339dd4edd768eb18c06f20b",
     "packages": [
         {
             "name": "2amigos/yii2-chartjs-widget",
@@ -388,7 +388,7 @@
             "version": "0.12.6-patch1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/selectize/selectize.js.git",
+                "url": "git@github.com:selectize/selectize.js.git",
                 "reference": "b8df29c9d4733857a4df4ddbf40d72abfd7c3ae9"
             },
             "dist": {
@@ -1250,6 +1250,53 @@
                 }
             ],
             "time": "2021-03-20T14:52:33+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-filesystem",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-filesystem.git",
+                "reference": "be670ac36f5927986cb4a2137e74c6d2b0563ffa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-filesystem/zipball/be670ac36f5927986cb4a2137e74c6d2b0563ffa",
+                "reference": "be670ac36f5927986cb4a2137e74c6d2b0563ffa",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\filesystem\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "File system utilities for managing files and folders including reading, writing and appending to files",
+            "homepage": "https://github.com/kartik-v/yii2-filesystem",
+            "keywords": [
+                "extension",
+                "file",
+                "filesystem",
+                "folder",
+                "yii2"
+            ],
+            "time": "2018-11-21T07:23:49+00:00"
         },
         {
             "name": "mikehaertl/php-shellcommand",
@@ -7050,7 +7097,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "schmunk42/yii2-giiant": 0,
-        "dmstr/yii2-web": 20
+        "dmstr/yii2-web": 20,
+        "kartik-v/yii2-filesystem": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

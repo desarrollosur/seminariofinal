@@ -4,7 +4,7 @@ namespace app\tests\fixtures;
 
 use yii\test\ActiveFixture;
 
-class TipoDniFixture extends ActiveFixture
+class TipoDniFixture extends BaseFixtures
 {
     public $modelClass = 'app\models\TipoDni';
     public $depends = ['\app\tests\fixtures\UserFixture'];
