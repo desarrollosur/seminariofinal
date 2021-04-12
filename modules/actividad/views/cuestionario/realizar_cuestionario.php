@@ -46,39 +46,24 @@ use yii\web\View;
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                             foreach($preguntaActual->actividadOpcions as $opcion){
+                                 /** @var ActividadOpcion $opcion */
+                            ?>
                             <tr>
                                 <td>
-                                    1
+                                    <?= $opcion->id ?>
                                 </td>
                                 <td>
-                                    Agudo
+                                    <?= $opcion->pregunta ?>
                                 </td>
                                 <td>
-                                    <?= Html::radio('seleccionar'); ?>
+                                    <?= Html::radio("opcion", false, ['value'=>$opcion->id]); ?>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    Recto
-                                </td>
-                                <td>
-                                    <?= Html::radio('seleccionar'); ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    Obtuso
-                                </td>
-                                <td>
-                                    <?= Html::radio('seleccionar'); ?>
-                                </td>
-                            </tr>                
+                            <?php
+                             }
+                            ?>
                         </tbody>
                     </table>
                 </div>             
