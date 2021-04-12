@@ -1,9 +1,17 @@
 <?php
 
+use app\models\Actividad;
+use app\models\Cuestionario;
 use yii\bootstrap\Html;
+use yii\helpers\Url;
+use yii\web\View;
+
+/** @var Cuestionario $model */
+/** @var Actividad $preguntaActual */
+/** @var View $this */
 ?>
 <div class="text-center" style="margin-bottom: 20px">
-    <h1>Realizando Cuestionario #1 </h1>
+    <h1>Realizando Cuestionario #<?= $cuestionario->id?> </h1>
 </div>
 <div id="wizard" role="application" class="wizard clearfix vertical">
     <div class="steps clearfix">
@@ -16,12 +24,11 @@ use yii\bootstrap\Html;
     <div class="content clearfix">
         <h3 id="wizard-h-0" tabindex="-1" class="title current">Step 1 Title</h3>
         <section id="wizard-p-0" role="tabpanel" aria-labelledby="wizard-h-0" class="body current" aria-hidden="false">
-            <h5 class="bd-wizard-step-title">Pregunta #1</h5>
-            <h2 class="section-heading">Identificar la figura </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+            <h5 class="bd-wizard-step-title">Pregunta #<?= $preguntaActual->id ?></h5>
+            <h2 class="section-heading"><?= $preguntaActual->descripcion ?> </h2>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="/images/angulo_recto.png" style='height: 100%; width: 100%; object-fit: contain'/> 
+                    <img src="<?= Url::to(['actividad/imagen-actividad', 'id'=>$preguntaActual->id])?>" style='height: 100%; width: 100%; object-fit: contain'/> 
                 </div>
                 <div class="col-md-6 vcenter">
                     <table class="table table-hover">

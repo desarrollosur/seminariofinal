@@ -38,7 +38,7 @@ class Cuestionario extends BaseCuestionario
     public function optimisticLock(): string {
         return 'version';
     }
-
+    
     public function debeContinuarRespondiendo(IServicioTutorIA $tutor): boolean {
 
     }

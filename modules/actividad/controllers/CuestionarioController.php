@@ -2,6 +2,8 @@
 
 namespace app\modules\actividad\controllers;
 
+use app\models\Cuestionario;
+
 class CuestionarioController extends \yii\web\Controller {
 
     public function actionCreate() {
@@ -19,7 +21,13 @@ class CuestionarioController extends \yii\web\Controller {
     }
 
     public function actionRealizarCuestionario($id) {
-        return $this->render('realizar_cuestionario');
+        $cuestionario = Cuestionario::findOne($id);
+        $preguntaActual = current($cuestionario->actividades);
+        return $this->render('realizar_cuestionario', 
+            [
+            'cuestionario'=>$cuestionario,
+            'preguntaActual'=>$preguntaActual
+            ]);
     }
 
 }

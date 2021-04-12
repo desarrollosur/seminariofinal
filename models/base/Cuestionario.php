@@ -26,7 +26,7 @@ use yii\db\Expression;
  * @property \app\models\User $creadoPor
  * @property \app\models\User $actualizadoPor
  * @property \app\models\CuestionarioActividad[] $cuestionarioActividads
- * @property \app\models\Actividad[] $cuestionarios
+ * @property \app\models\Actividad[] $actividades
  * @property \app\models\IntentoResolucion[] $intentoResolucions
  * @property string $aliasModel
  */
@@ -123,9 +123,9 @@ abstract class Cuestionario extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCuestionarios()
+    public function getActividades()
     {
-        return $this->hasMany(\app\models\Actividad::className(), ['id' => 'cuestionarioid'])->viaTable('cuestionario_actividad', ['actividadid' => 'id']);
+        return $this->hasMany(\app\models\Actividad::className(), ['id' => 'actividadid'])->viaTable('cuestionario_actividad', ['cuestionarioid' => 'id']);
     }
 
     /**
