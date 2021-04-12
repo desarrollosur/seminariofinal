@@ -20,7 +20,7 @@ class MultimediaFixture extends BaseFixtures
 
         try {
             $carpetaOrigen = new Folder('@tests/_data/multimedia');
-            foreach ($carpetaOrigen->find('.*\.jpg') as $archivo ){
+            foreach ($carpetaOrigen->find() as $archivo ){
                   $stringFile = $carpetaOrigen->pwd() . DIRECTORY_SEPARATOR . $archivo;
                   $objetoArchivo = new File($stringFile);
                   $dirArchivos = Yii::getAlias('@archivos');
@@ -35,7 +35,7 @@ class MultimediaFixture extends BaseFixtures
         parent::unload();
         try {
             $carpetaOrigen = new Folder('@archivos');
-            foreach ($carpetaOrigen->find('.*\.jpg') as $archivo ){
+            foreach ($carpetaOrigen->find('[0-9]*') as $archivo ){
                   $stringFile = $carpetaOrigen->pwd() . DIRECTORY_SEPARATOR . $archivo;
                   $objetoArchivo = new File($stringFile);
                   $objetoArchivo->delete();
