@@ -2,21 +2,24 @@
 
 namespace app\modules\actividad\controllers;
 
-class CuestionarioController extends \yii\web\Controller
-{
-    public function actionCreate()
-    {
+class CuestionarioController extends \yii\web\Controller {
+
+    public function actionCreate() {
         return $this->render('create');
     }
 
-    public function actionIndex()
-    {
-        return $this->render('index');
+    public function actionIndex() {
+        $searchModel = new search\CuestionarioSearch();
+        $dataProvider = $searchModel->search($_GET);
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'searchModel'=>$searchModel
+            ]);
     }
 
-    public function actionRealizarCuestionario($id)
-    {
+    public function actionRealizarCuestionario($id) {
         return $this->render('realizar_cuestionario');
     }
-    
+
 }

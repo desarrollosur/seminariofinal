@@ -9,11 +9,11 @@ namespace app\models\query;
  */
 class CuestionarioQuery extends \yii\db\ActiveQuery
 {
-    /*public function active()
+    public function active()
     {
-        $this->andWhere('[[status]]=1');
+        $this->andWhere('[[activo]]=1');
         return $this;
-    }*/
+    }
 
     /**
      * @inheritdoc
