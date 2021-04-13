@@ -23,7 +23,8 @@
         "schmunk42/yii2-giiant": "@stable",
         "msheng/yii2-jwt": "^1.0",
         "dmstr/yii2-web": "dev-master",
-        "kartik-v/yii2-filesystem": "@dev"
+        "kartik-v/yii2-filesystem": "@dev",
+        "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -76,5 +77,10 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+           "app\\": "."
+        }
+    }    
 }

@@ -2,11 +2,13 @@
 
 namespace app\modules\actividad\controllers;
 
+use app\business\services\CuestionarioService;
 use app\models\Cuestionario;
 use app\modules\actividad\controllers\search\CuestionarioSearch;
 use Yii;
+use yii\web\Controller;
 
-class CuestionarioController extends \yii\web\Controller {
+class CuestionarioController extends Controller {
 
     public function actionCreate() {
         return $this->render('create');
@@ -23,6 +25,7 @@ class CuestionarioController extends \yii\web\Controller {
     }
 
     public function actionRealizarCuestionario($id) {
+        $managerCuestionarios = Yii::$container->get(CuestionarioService::class);
         $cuestionario = Cuestionario::findOne($id);
         $actividades = $cuestionario->actividades;
         $sesionPreguntaActual = Yii::$app->session->get('preguntaActual', 0);

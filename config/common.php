@@ -1,5 +1,16 @@
 <?php
 
+\Yii::$container->set( 
+    'GuzzleHttp\Client',
+    [], 
+    [
+        [
+            'timeout'         => 10,
+            'allow_redirects' => false,
+        ]
+    ]
+);
+\Yii::$container->set('app\business\interfaces\IServicioTutorIA', 'app\business\services\TutorIAService');
 \Yii::$container->set('app\business\services\CuestionarioService');
 
 $params = array_merge(

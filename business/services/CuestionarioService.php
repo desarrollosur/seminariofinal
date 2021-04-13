@@ -8,16 +8,21 @@
 
 namespace app\business\services;
 
+use app\business\interfaces\IServicioTutorIA;
+
 /**
  * Description of CuestionarioService
  *
  * @author mariano
  */
 class CuestionarioService {
+    protected $tutor;
     //put your code here
-    public function __construct() {
-        
+    
+    public function __construct(IServicioTutorIA $tutor) {
+        $this->tutor = $tutor;
     }
+    
     public function iniciarCuestionario(){
         
     }
