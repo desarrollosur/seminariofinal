@@ -1,5 +1,7 @@
 <?php
 
+\Yii::$container->set('app\business\services\CuestionarioService');
+
 $params = array_merge(
         require(__DIR__ . '/params.php')
 );
