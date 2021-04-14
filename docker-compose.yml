@@ -1,4 +1,4 @@
-version: '2'
+version: '2.4'
 services:
   php:
     image: yiisoftware/yii2-php:7.3-apache
@@ -23,6 +23,17 @@ services:
         POSTGRES_PASSWORD: seminariofinal
      networks:
       red:
+  flask:
+      image: python-docker:latest
+      build:
+        context: ./flaskserver
+      volumes:
+       - ./flaskserver:/app:delegated
+      environment:
+          FLASK_DEBUG: 1
+          FLASK_ENV: development          
+      networks:
+        red:
 volumes:
   pgdata:
 networks:
