@@ -73,9 +73,21 @@ use yii\web\View;
     <div class="actions clearfix">
         <ul role="menu" aria-label="Pagination">
             <li class="disabled" aria-disabled="true"><a href="#previous" role="menuitem">Previous</a></li>
-            <li aria-hidden="false" aria-disabled="false"><a href="<?= Url::to(['siguiente-pregunta', 'cuestionario'=>$cuestionario->id]) ?>" role="menuitem">Siguiente</a></li>
+            <li aria-hidden="false" aria-disabled="false"><button class="btn btn-primary" onclick="siguientePregunta(event)">Siguiente </button></li>
             <li style="display: none;" aria-hidden="true"><a href="#finish" role="menuitem">Finish</a></li>
         </ul>
     </div>
 </div>
 
+<script>
+    function siguientePregunta(e){
+        const valor = $("input[name='opcion']:checked").val();
+        if(!valor){
+            e.preventDefault();
+            alert('seleccione un valor');
+            return false;
+        }
+        const url = '<?= Url::to(['siguiente-pregunta', 'cuestionario'=>$cuestionario->id])?>';
+        $.post(url, {valor: valor});
+    }
+</script>

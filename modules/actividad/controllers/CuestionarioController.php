@@ -43,6 +43,10 @@ class CuestionarioController extends Controller {
     
     public function actionSiguientePregunta($cuestionario){
         $sesionPreguntaActual = Yii::$app->session->get('preguntaActual');
+        $sesionRespuestasActuales = Yii::$app->session->get('respuestas', []);
+        $valorPregunta = Yii::$app->request->post('valor', null);
+        $sesionRespuestasActuales[$sesionPreguntaActual] = $valorPregunta;
+        Yii::$app->session->set('respuestas', $sesionRespuestasActuales);
         Yii::$app->session->set('preguntaActual', ++$sesionPreguntaActual);
         return $this->redirect(['realizar-cuestionario', 'id'=>$cuestionario]);
     }
