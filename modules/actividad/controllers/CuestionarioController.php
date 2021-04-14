@@ -52,7 +52,15 @@ class CuestionarioController extends Controller {
     }
     
     public function actionFinalCuestionario($id){
-        return $this->render('final-cuestionario');
+        $managerCuestionarios = Yii::$container->get(CuestionarioService::class);
+        /** @var CuestionarioService $managerCuestionarios */
+        $cuestionario = Cuestionario::findOne($id);
+
+        $respuestaManager = $managerCuestionarios->consultarTutor(Yii::$app->user->identity, $cuestionario);
+        return $this->render('final-cuestionario', 
+                [
+                    'respuestaManager'=>$respuestaManager
+                ]);
     }
 
 }

@@ -9,8 +9,11 @@
 namespace app\business\services;
 
 use app\business\interfaces\IServicioTutorIA;
+use app\models\Cuestionario;
+use app\models\User;
 
 /**
+ * @property IServicioTutorIA $tutor servicio de tutor IA
  * Description of CuestionarioService
  *
  * @author mariano
@@ -21,6 +24,10 @@ class CuestionarioService {
     
     public function __construct(IServicioTutorIA $tutor) {
         $this->tutor = $tutor;
+    }
+    
+    public function consultarTutor(User $usuarioActual, Cuestionario $cuestionario) {
+        return $this->tutor->consultarTutorUsuarioCuestionario($usuarioActual, $cuestionario);
     }
     
     public function iniciarCuestionario(){
