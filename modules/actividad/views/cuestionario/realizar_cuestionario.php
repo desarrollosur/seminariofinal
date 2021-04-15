@@ -14,13 +14,6 @@ use yii\web\View;
     <h1>Realizando Cuestionario #<?= $cuestionario->id?> </h1>
 </div>
 <div id="wizard" role="application" class="wizard clearfix vertical">
-    <div class="steps clearfix">
-        <ul role="tablist">
-            <li role="tab" class="first current" aria-disabled="false" aria-selected="true"><a id="wizard-t-0" href="#wizard-h-0" aria-controls="wizard-p-0"><span class="current-info audible">current step: </span><span class="number">1</span></a></li>
-            <li role="tab" class="disabled" aria-disabled="true"><a id="wizard-t-1" href="#wizard-h-1" aria-controls="wizard-p-1"><span class="number">2</span></a></li>
-            <li role="tab" class="disabled last" aria-disabled="true"><a id="wizard-t-2" href="#wizard-h-2" aria-controls="wizard-p-2"><span class="number">3</span></a></li>
-        </ul>
-    </div>
     <div class="content clearfix">
         <h3 id="wizard-h-0" tabindex="-1" class="title current">Step 1 Title</h3>
         <section id="wizard-p-0" role="tabpanel" aria-labelledby="wizard-h-0" class="body current" aria-hidden="false">

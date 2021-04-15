@@ -45,7 +45,7 @@ class CuestionarioController extends Controller {
     }
     
     public function actionSiguientePregunta($cuestionario){
-        $sesionPreguntaActual = Yii::$app->session->get('preguntaActual');
+        $sesionPreguntaActual = Yii::$app->session->get('preguntaActual', 0);
         $sesionRespuestasActuales = Yii::$app->session->get('respuestas', []);
         $valorPregunta = Yii::$app->request->post('valor', null);
         $sesionRespuestasActuales[$sesionPreguntaActual] = $valorPregunta;
@@ -69,8 +69,18 @@ class CuestionarioController extends Controller {
         if(!$opcionIntento->save()){
             throw new Exception(Json::encode($opcionIntento->errors));
         }
+
+        $managerCuestionarios = Yii::$container->get(CuestionarioService::class);
+        /** @var CuestionarioService $managerCuestionarios */
+        $cuestionarioActual = Cuestionario::findOne($cuestionario);
+        $respuestaManager = $managerCuestionarios->consultarTutor(Yii::$app->user->identity, $cuestionarioActual);
+        $valorTutor = $respuestaManager[0]??false;
+        if($valorTutor && $valorTutor > 0.84) {
+            Yii::$app->session->remove('preguntaActual');
+            Yii::$app->session->remove('intento_resolucion_actual');
+            return $this->redirect(['final-cuestionario', 'id'=>$cuestionario]);
+        }
         
-        Yii::$app->session->set('respuestas', $sesionRespuestasActuales);
         Yii::$app->session->set('preguntaActual', ++$sesionPreguntaActual);
 
 
@@ -84,6 +94,10 @@ class CuestionarioController extends Controller {
         $cuestionario = Cuestionario::findOne($id);
 
         $respuestaManager = $managerCuestionarios->consultarTutor(Yii::$app->user->identity, $cuestionario);
+
+        Yii::$app->session->remove('preguntaActual');
+        Yii::$app->session->remove('intento_resolucion_actual');
+
         return $this->render('final-cuestionario', 
                 [
                     'respuestaManager'=>$respuestaManager
