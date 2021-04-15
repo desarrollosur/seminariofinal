@@ -4,8 +4,12 @@ namespace app\modules\actividad\controllers;
 
 use app\business\services\CuestionarioService;
 use app\models\Cuestionario;
+use app\models\IntentoResolucion;
+use app\models\OpcionIntentoResolucion;
 use app\modules\actividad\controllers\search\CuestionarioSearch;
 use Yii;
+use yii\base\Exception;
+use yii\helpers\Json;
 use yii\web\Controller;
 
 class CuestionarioController extends Controller {
@@ -25,7 +29,6 @@ class CuestionarioController extends Controller {
     }
 
     public function actionRealizarCuestionario($id) {
-        $managerCuestionarios = Yii::$container->get(CuestionarioService::class);
         $cuestionario = Cuestionario::findOne($id);
         $actividades = $cuestionario->actividades;
         $sesionPreguntaActual = Yii::$app->session->get('preguntaActual', 0);
@@ -46,8 +49,32 @@ class CuestionarioController extends Controller {
         $sesionRespuestasActuales = Yii::$app->session->get('respuestas', []);
         $valorPregunta = Yii::$app->request->post('valor', null);
         $sesionRespuestasActuales[$sesionPreguntaActual] = $valorPregunta;
+
+        $intento = new IntentoResolucion();
+        if($sesionPreguntaActual===0){
+            $intento->userid = Yii::$app->user->identity->id;
+            $intento->cuestionarioid = $cuestionario;
+            $intento->tipo_finalizacion_cuestionarioid = 2; // seteado temporalmente a ENVIO
+            if(!$intento->save()){
+                throw new Exception(Json::encode($intento->errors));
+            }
+            Yii::$app->session->set('intento_resolucion_actual', $intento->id);
+        }else{
+            $intento = IntentoResolucion::findOne(Yii::$app->session->get('intento_resolucion_actual'));
+        }
+        
+        $opcionIntento = new OpcionIntentoResolucion();
+        $opcionIntento->intento_resolucionid = $intento->id;
+        $opcionIntento->actividad_opcionid = $valorPregunta;
+        if(!$opcionIntento->save()){
+            throw new Exception(Json::encode($opcionIntento->errors));
+        }
+        
         Yii::$app->session->set('respuestas', $sesionRespuestasActuales);
         Yii::$app->session->set('preguntaActual', ++$sesionPreguntaActual);
+
+
+
         return $this->redirect(['realizar-cuestionario', 'id'=>$cuestionario]);
     }
     
