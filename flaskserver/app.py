@@ -1,5 +1,6 @@
-from flask import Flask
+from flask import Flask, jsonify, request
 import pickle
+import json
 import pyBKT
 import pandas as pd
 
@@ -60,6 +61,14 @@ df = pd.DataFrame.from_dict(datosdict)
 pred = Pickled_LR_Model.predict(data=df)
 
 app = Flask(__name__)
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    datos = request.json
+    dataframe = pd.DataFrame.from_dict(datos)
+    pred2 = Pickled_LR_Model.predict(data=dataframe)
+    return pred2.to_html()
+
 
 @app.route('/')
 def hello_world():
