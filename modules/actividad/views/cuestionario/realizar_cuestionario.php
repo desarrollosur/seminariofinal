@@ -10,6 +10,12 @@ use yii\web\View;
 /** @var Actividad $preguntaActual */
 /** @var View $this */
 ?>
+<style>
+     input[type='radio'] { 
+     transform: scale(2); 
+ }
+
+</style>
 <div class="text-center" style="margin-bottom: 20px">
     <h1>Realizando Cuestionario #<?= $cuestionario->id?> </h1>
 </div>
@@ -26,31 +32,27 @@ use yii\web\View;
                 <div class="col-md-6 vcenter">
                     <table class="table table-hover">
                         <thead>
-                            <tr>
-                                <th>
-                                    Opción  
-                                </th>
-                                <th>
+                            <tr class="text-center">
+                                <th class="text-center">
                                     Descripción
                                 </th>
-                                <th>
+                                <th class="text-center">
                                     Elección
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                             foreach($preguntaActual->actividadOpcions as $opcion){
+                            $opciones = $preguntaActual->actividadOpcions;
+                            shuffle($opciones);
+                            foreach($opciones as $opcion){
                                  /** @var ActividadOpcion $opcion */
                             ?>
                             <tr>
-                                <td>
-                                    <?= $opcion->id ?>
+                                <td class="text-center">
+                                    <h4><?= $opcion->pregunta ?></h4>
                                 </td>
-                                <td>
-                                    <?= $opcion->pregunta ?>
-                                </td>
-                                <td>
+                                <td class="text-center">
                                     <?= Html::radio("opcion", false, ['value'=>$opcion->id]); ?>
                                 </td>
                             </tr>
